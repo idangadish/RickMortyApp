@@ -13,5 +13,5 @@ data class Info(
     @SerialName("pages")
     val pages: Int,
     @SerialName("prev")
-    val prev: Any
+    val prev: String
 )
