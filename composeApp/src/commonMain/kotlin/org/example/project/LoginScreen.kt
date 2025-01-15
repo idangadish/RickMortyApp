@@ -93,7 +93,10 @@ fun LoginScreen() {
 
                     // Login button
                     Button(
-                        onClick = { /* Handle login logic */ },
+                        //Check only transfer to CharacterScreen without logic
+                        onClick = {
+
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp)
