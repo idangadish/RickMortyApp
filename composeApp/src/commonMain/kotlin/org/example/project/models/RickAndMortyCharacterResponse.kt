@@ -9,5 +9,5 @@ data class RickAndMortyCharacterResponse(
     @SerialName("info")
     val info: Info,
     @SerialName("results")
-    val results: List<Result>
+    val characters: List<Character>
 )
