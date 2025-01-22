@@ -1,4 +1,4 @@
-package org.example.project
+package org.example.project.character.presentation.log_in
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -30,6 +30,7 @@ import org.eran.project.bgGreen
 import org.eran.project.custom.EmailTextField
 import org.eran.project.custom.PasswordTextField
 import org.eran.project.lightGreen
+import org.example.project.character.presentation.components.SharedScaffold
 import org.jetbrains.compose.resources.painterResource
 import rickmortyapp.composeapp.generated.resources.Res
 import rickmortyapp.composeapp.generated.resources.rickLogo
@@ -41,27 +42,9 @@ fun LoginScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text("Login", color = Color.White, fontSize = 38.sp)
-                    }
-                },
-                backgroundColor = bgGreen
-            )
-        },
-        content = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(lightGreen) // Light green background
-                    .padding(top = 50.dp)
-            ) {
+    SharedScaffold(
+        title = "Login"
+    ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
@@ -109,5 +92,4 @@ fun LoginScreen() {
                 }
             }
         }
-    )
-}
+

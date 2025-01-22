@@ -1,4 +1,6 @@
-package org.example.project.util
+package org.example.project.core
+
+import org.example.project.core.domain.Error
 
 enum class NetworkError : Error {
     REQUEST_TIMEOUT,

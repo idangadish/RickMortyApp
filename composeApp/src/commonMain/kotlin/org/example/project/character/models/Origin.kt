@@ -1,11 +1,11 @@
-package org.example.project.models
+package org.example.project.character.models
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Location(
+data class Origin(
     @SerialName("name")
     val name: String,
     @SerialName("url")

@@ -5,10 +5,10 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
-import org.example.project.models.Character
-import org.example.project.models.RickAndMortyCharacterResponse
-import org.example.project.util.NetworkError
-import org.example.project.util.Result
+import org.example.project.character.models.Character
+import org.example.project.character.models.RickAndMortyCharacterResponse
+import org.example.project.core.NetworkError
+import org.example.project.core.domain.Result
 
 class RickAndMortyClient(
     private val httpClient: HttpClient
@@ -39,7 +39,7 @@ class RickAndMortyClient(
         }
     }
 
-    suspend fun getCharacterByID(id:Int):Result<Character,NetworkError>{
+    suspend fun getCharacterByID(id:Int): Result<Character, NetworkError> {
         val response =
             try {
                 httpClient.get("${baseURL}character/$id") {
