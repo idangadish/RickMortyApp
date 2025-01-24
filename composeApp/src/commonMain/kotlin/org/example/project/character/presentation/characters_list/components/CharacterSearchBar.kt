@@ -5,26 +5,26 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.minimumInteractiveComponentSize
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import io.ktor.websocket.Frame
 import org.example.project.character.presentation.characters_list.CharactersListAction
 import org.jetbrains.compose.resources.stringResource
 import rickmortyapp.composeapp.generated.resources.Res
 import rickmortyapp.composeapp.generated.resources.close_hint
 import rickmortyapp.composeapp.generated.resources.search_hint
-
 
 @Composable
 fun CharacterSearchBar(
@@ -32,12 +32,12 @@ fun CharacterSearchBar(
     onSearchQueryChange: (String) -> Unit,
     onImeSearch: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onSearchQueryChange,
         shape = RoundedCornerShape(100),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
             cursorColor = Color.Black,
             focusedBorderColor = Color.White
         ),
@@ -64,12 +64,12 @@ fun CharacterSearchBar(
         trailingIcon = {
             AnimatedVisibility(
                 visible = searchQuery.isNotBlank()
-            ){
+            ) {
                 IconButton(
                     onClick = {
                         onSearchQueryChange("")
                     }
-                ){
+                ) {
                     Icon(
                         imageVector = Icons.Default.Close,
                         contentDescription = stringResource(Res.string.close_hint)
@@ -82,6 +82,5 @@ fun CharacterSearchBar(
                 shape = RoundedCornerShape(100),
                 color = Color.White
             )
-            .minimumInteractiveComponentSize()
     )
 }

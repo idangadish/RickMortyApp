@@ -14,11 +14,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -57,9 +55,11 @@ fun CharchterListScreenRoot(
 
 
 @Composable
-private fun CharactersScreen(state: CharactersListState,
-                     onAction: (CharactersListAction) -> Unit){
+private fun CharactersScreen(
+    state: CharactersListState,
+    onAction: (CharactersListAction) -> Unit){
     val keyboardController = LocalSoftwareKeyboardController.current
+    val searchResultState = rememberLazyGridState()
 
     SharedScaffold(
         title = "Characters"
@@ -83,33 +83,6 @@ private fun CharactersScreen(state: CharactersListState,
 
         }
 
-            }
-        }
-
-
-@Composable
-fun CardFun(){
-    Card(
-        shape = RoundedCornerShape(16.dp),
-        elevation = 4.dp,
-        modifier = Modifier
-            .padding(5.dp)
-            .fillMaxWidth()
-            .background(color =Color.White)
-            .height(100.dp)
-            .width(100.dp)
-            .aspectRatio(1f)
-            .clickable {  }
-    ){
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-            .fillMaxWidth()
-
-        ){
-
-
-        }
     }
 }
 
