@@ -1,4 +1,4 @@
-package org.example.project.character.models
+package org.example.project.character.data.models
 
 
 import kotlinx.serialization.SerialName
@@ -9,5 +9,5 @@ data class RickAndMortyCharacterResponse(
     @SerialName("info")
     val info: Info,
     @SerialName("results")
-    val characters: List<Character>
+    val characters: List<CharacterModel>
 )

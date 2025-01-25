@@ -1,4 +1,4 @@
-package org.example.project.character.models
+package org.example.project.character.data.models
 
 
 import kotlinx.serialization.SerialName
@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Info(
     @SerialName("count")
-    val count: Int,
+    val count: Int? = null,
     @SerialName("next")
-    val next: String,
+    val next: String? = null,
     @SerialName("pages")
-    val pages: Int,
+    val pages: Int? = null,
     @SerialName("prev")
-    val prev: String
+    val prev: String? = null
 )
