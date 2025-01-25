@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.eran.project.bgGreen
-import org.eran.project.custom.EmailTextField
-import org.eran.project.custom.PasswordTextField
+import org.example.project.custom.EmailTextField
+import org.example.project.custom.PasswordTextField
 import org.example.project.character.presentation.components.SharedScaffold
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
