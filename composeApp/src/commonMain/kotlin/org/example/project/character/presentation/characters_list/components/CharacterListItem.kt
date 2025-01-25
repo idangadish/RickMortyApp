@@ -39,18 +39,17 @@ fun CharacterListItem(
             .clickable(onClick = onClick),
         color = Color.White
     ) {
-        Column (
+        Column(
             modifier = Modifier
-                .padding(16.dp)
-                .width(100.dp)
-                .height(100.dp),
+                .height(150.dp)
+                .width(150.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .height(60.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .height(60.dp),
                 contentAlignment = Alignment.Center
             ) {
                 var imageLoadResult by remember {
@@ -74,7 +73,7 @@ fun CharacterListItem(
 
                 val painterState by painter.state.collectAsStateWithLifecycle()
                 val transition by animateFloatAsState(
-                    targetValue = if(painterState is AsyncImagePainter.State.Success) {
+                    targetValue = if (painterState is AsyncImagePainter.State.Success) {
                         1f
                     } else {
                         0f
@@ -98,6 +97,7 @@ fun CharacterListItem(
                                 ContentScale.Fit
                             },
                             modifier = Modifier
+                                .fillMaxWidth()
                                 .aspectRatio(
                                     ratio = 0.65f,
                                     matchHeightConstraintsFirst = true
@@ -112,49 +112,40 @@ fun CharacterListItem(
                     }
                 }
             }
-            Box (
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
-            ) {
-                //Check why it coouldn't take a Name ?
-                character.name.firstOrNull()?.let{
 
+            // שם הדמות
+            Text(
+                text = character.name,
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            // הסטטוס והטייפ בשורה אחת
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
-                    text =  character.name ,
-                    style = MaterialTheme.typography.titleMedium,
-                    maxLines = 1,
+                    text = character.status,
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
 
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                    ) {
-                    character.status.firstOrNull()?.let{
-                    Text(
-                            text = character.status + " - ",
-                            style = MaterialTheme.typography.bodyMedium,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                    character.type.firstOrNull()?.let{
-                        Text(
-                            text =  character.type,
-                            style = MaterialTheme.typography.bodyMedium,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
+                Text(modifier = Modifier.padding(5.dp),
+                    text = "-")
 
-
-                }
+                Text(
+                    text = character.species,
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }
 }
-
 
 
 
