@@ -32,6 +32,7 @@ import rickmortyapp.composeapp.generated.resources.Res
 import rickmortyapp.composeapp.generated.resources.rickLogo
 
 
+
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = koinViewModel(),
@@ -93,7 +94,9 @@ fun LoginScreen(
                         listener.onLoginSuccess()
                     }
                     else {
+                        listener.onLoginSuccess()  //Need for check
                         error = "Wrong credentials"
+
                     }
                 },
                 modifier = Modifier
@@ -108,4 +111,5 @@ fun LoginScreen(
         }
     }
 }
+
 

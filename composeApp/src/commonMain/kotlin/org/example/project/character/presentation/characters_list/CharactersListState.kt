@@ -6,6 +6,6 @@ import org.example.project.core.presentation.UiText
 data class CharactersListState(
     val searchQuery: String = "",
     val searchResults: List<Character> = emptyList(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val errorMessage: UiText? = null
 )

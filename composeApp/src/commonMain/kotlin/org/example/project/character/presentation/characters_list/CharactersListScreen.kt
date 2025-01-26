@@ -53,10 +53,10 @@ fun CharchterListScreenRoot(
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     CharactersScreen(state = state, onAction = { action->
-        when(action){
-            is CharactersListAction.OnCharacterClick -> onCharacterClick(action.character)
-            else -> Unit
-        }
+       //when(action){
+       //    is CharactersListAction.OnCharacterClick -> onCharacterClick(action.character)
+       //    else -> Unit
+       //}
 
         viewModel.onAction(action)
 
