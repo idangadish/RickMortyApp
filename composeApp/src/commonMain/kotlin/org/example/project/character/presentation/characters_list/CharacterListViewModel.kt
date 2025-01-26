@@ -35,7 +35,7 @@ class CharacterListViewModel(private val characterRepository: CharacterRepositor
         )
 
     init {
-        // טען את כל הדמויות בתחילת הדרך
+
         loadAllCharacters()
         observeSearchQuery()
     }

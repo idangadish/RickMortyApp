@@ -10,7 +10,7 @@ import org.example.project.core.domain.Result
 
 private val BASE_URL = "https://rickandmortyapi.com/api/"
 
-class KtorRemoteCharacterDataSource(private val httpClient: HttpClient):RemoteCharacterDataSource {
+class KtorRemoteCharacterDataSource(private val httpClient: HttpClient) : RemoteCharacterDataSource {
     override suspend fun searchCharacters(
         query: String,
         resultLimit: Int?
