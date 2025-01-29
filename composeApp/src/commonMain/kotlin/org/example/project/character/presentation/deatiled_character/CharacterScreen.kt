@@ -1,4 +1,4 @@
-package org.example.project.character.presentation
+package org.example.project.character.presentation.deatiled_character
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

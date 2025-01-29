@@ -16,7 +16,5 @@ fun CharacterModel.toCharacter(): Character{
         species = species ?: "",
         status = status ?: "",
         type = type ?: ""
-
-
     )
 }

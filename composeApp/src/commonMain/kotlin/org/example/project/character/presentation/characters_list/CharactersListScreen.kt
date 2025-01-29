@@ -45,7 +45,7 @@ import rickmortyapp.composeapp.generated.resources.Res
 import rickmortyapp.composeapp.generated.resources.no_search_result
 
 @Composable
-fun CharchterListScreenRoot(
+fun CharacterListScreenRoot(
     viewModel: CharacterListViewModel = koinViewModel(),
     onCharacterClick: (Character) -> Unit,
     modifier: Modifier = Modifier
@@ -109,14 +109,6 @@ private fun CharactersScreen(
                     CircularProgressIndicator()
                 } else {
                     when {
-                        state.errorMessage != null -> {
-                            Text(
-                                text = state.errorMessage.asString(),
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.headlineSmall,
-                                color = MaterialTheme.colorScheme.error
-                            )
-                        }
 
                         state.searchResults.isEmpty() -> {
                             Text(
@@ -127,6 +119,14 @@ private fun CharactersScreen(
                             )
                         }
 
+                        state.errorMessage != null -> {
+                            Text(
+                                text = state.errorMessage.asString(),
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.headlineSmall,
+                                color = MaterialTheme.colorScheme.error
+                            )
+                        }
 
                         else -> {
                             CharacterList(
