@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
        }
 
        @Serializable
-       data class CharacterDetail(val id: String) : Routes {
-          override val route: String = "character_detail/$id"
+       data object CharacterDetail : Routes {
+          override val route: String = "character_detail"
        }
    }

@@ -8,11 +8,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import io.ktor.client.engine.HttpClientEngine
 import org.example.project.character.presentation.characters_list.CharacterListScreenRoot
-import org.example.project.character.presentation.characters_list.CharacterListViewModel
+import org.example.project.character.presentation.characters_list.CharactersViewModel
+import org.example.project.character.presentation.deatiled_character.CharacterScreen
 import org.example.project.character.presentation.log_in.LoginActionListener
 import org.example.project.character.presentation.log_in.LoginScreen
 import org.example.project.character.presentation.log_in.LoginViewModel
-
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -22,6 +22,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App(engine: HttpClientEngine) {
     MaterialTheme {
         val navController = rememberNavController()
+        val charactersViewModel = koinViewModel<CharactersViewModel>()
 
         NavHost(
             navController = navController,
@@ -41,13 +42,18 @@ fun App(engine: HttpClientEngine) {
 
 
             composable(Routes.CharacterList.route) {
-                val viewModel = koinViewModel<CharacterListViewModel>()
                 CharacterListScreenRoot(
-                    viewModel = viewModel,
+                    viewModel = charactersViewModel,
                     onCharacterClick = { character ->
-                        navController.navigate(Routes.CharacterDetail(character.id.toString()).route)
+                        val detailsRoute = Routes.CharacterDetail.route
+                        charactersViewModel.setCharacter(character)
+                        navController.navigate(detailsRoute)
                     }
                 )
+            }
+
+            composable(Routes.CharacterDetail.route) {
+                CharacterScreen(charactersViewModel)
             }
         }
     }

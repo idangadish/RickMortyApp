@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -21,7 +20,7 @@ import org.example.project.core.domain.onError
 import org.example.project.core.domain.onSuccess
 import org.example.project.core.presentation.toUiText
 
-class CharacterListViewModel(private val characterRepository: CharacterRepository) : ViewModel() {
+class CharactersViewModel(private val characterRepository: CharacterRepository) : ViewModel() {
 
     private var cachedCharacters = emptyList<Character>()
     private var searchJob: Job? = null
@@ -34,8 +33,9 @@ class CharacterListViewModel(private val characterRepository: CharacterRepositor
             _state.value
         )
 
-    init {
+    private lateinit var selectedCharacter:Character
 
+    init {
         loadAllCharacters()
         observeSearchQuery()
     }
@@ -128,4 +128,10 @@ class CharacterListViewModel(private val characterRepository: CharacterRepositor
                 }
             }
     }
+
+    fun setCharacter(character: Character) {
+        this.selectedCharacter = character
+    }
+
+    fun getCharacter() = selectedCharacter
 }

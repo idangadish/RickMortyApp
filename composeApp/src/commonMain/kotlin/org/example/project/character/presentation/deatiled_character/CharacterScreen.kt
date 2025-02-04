@@ -24,10 +24,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import org.example.project.character.domain.Character
+import org.example.project.character.presentation.characters_list.CharactersViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun CharacterScreen(character: Character) {
+fun CharacterScreen(charactersViewModel: CharactersViewModel) {
+    val character = charactersViewModel.getCharacter()
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color(0xFFD9F1E7) // Soft pastel green background
@@ -92,21 +94,21 @@ fun CharacterScreen(character: Character) {
     }
 }
 
-@Preview
-@Composable
-fun PreviewCharScreen() {
-    val character = Character(
-        id = 288,
-        name = "Rick D716-B",
-        status = "Alive",
-        species = "Human",
-        type = "",
-        gender = "Male",
-        originName = "Earth (D716-B)",
-        currentLocation = "Citadel of Ricks",
-        imageUrl = "https://rickandmortyapi.com/api/character/avatar/288.jpeg",
-        creationDate = "2017-12-31T19:55:25.101Z"
-    )
-    CharacterScreen(character = character)
-}
+//@Preview
+//@Composable
+//fun PreviewCharScreen() {
+//    val character = Character(
+//        id = 288,
+//        name = "Rick D716-B",
+//        status = "Alive",
+//        species = "Human",
+//        type = "",
+//        gender = "Male",
+//        originName = "Earth (D716-B)",
+//        currentLocation = "Citadel of Ricks",
+//        imageUrl = "https://rickandmortyapi.com/api/character/avatar/288.jpeg",
+//        creationDate = "2017-12-31T19:55:25.101Z"
+//    )
+//    CharacterScreen(charactersViewModel = character)
+//}
 
