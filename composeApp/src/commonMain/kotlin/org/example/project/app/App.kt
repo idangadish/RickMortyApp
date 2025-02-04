@@ -53,22 +53,10 @@ fun App(engine: HttpClientEngine) {
             }
 
             composable(Routes.CharacterDetail.route) {
-                CharacterScreen(charactersViewModel)
+                CharacterScreen(charactersViewModel){
+                    navController.navigateUp()
+                }
             }
         }
     }
 }
-//  composable(
-//      route = Routes.CharacterDetail.route ,
-//      arguments = listOf(
-//          navArgument("id") { type = NavType.StringType }
-//      )
-//  ) { backStackEntry ->
-//      val characterId = backStackEntry.arguments?.getString("id")
-//      val viewModel = remember { CharacterDetailViewModel(characterId) }
-//      CharacterDetailScreen(
-//          viewModel = viewModel,
-//          onBackClick = { navController.navigateUp() }
-//      )
-//  }
-
